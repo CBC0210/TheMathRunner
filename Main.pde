@@ -1,6 +1,7 @@
 import processing.core.*;
 import processing.event.*;
 
+int a = 0;
 PApplet app;
 Scene currentScene;
 HomeScreen homeScreen;
