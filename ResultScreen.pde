@@ -35,6 +35,10 @@ class ResultScreen extends Scene {
     }
   }
   
+  void updateHoverStates(int mouseX, int mouseY) {
+  
+  }
+  
   void handleKeyPressed(char key) {
     // 處理按鍵事件（如果需要）
   }

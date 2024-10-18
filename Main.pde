@@ -2,6 +2,7 @@ import processing.core.*;
 import processing.event.*;
 
 PApplet app;
+PFont notoFont;
 Scene currentScene;
 HomeScreen homeScreen;
 LevelSelection levelSelection;
@@ -13,11 +14,15 @@ void setup() {
   fullScreen(); // 設定全螢幕，適應不同螢幕大小
   app = this;
   
+  // 載入字體
+  notoFont = createFont("data/fonts/NotoSansTC-Regular.ttf", 32);
+  textFont(notoFont);
+  
   // 初始化攝影機
   camera = new Camera(app, width / 2, height / 2);
   
   // 初始化各場景
-  homeScreen = new HomeScreen(app);
+  homeScreen = new HomeScreen(app,camera);
   levelSelection = new LevelSelection(app);
   gameScene = new GameScene(app);
   resultScreen = new ResultScreen(app);

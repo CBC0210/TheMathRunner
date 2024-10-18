@@ -33,7 +33,7 @@ class HowToPlayScreen extends Scene {
       currentScene = homeScreen; // 返回首頁場景
     }
   }
-  
+  void updateHoverStates(int mouseX, int mouseY) {}
   void handleKeyPressed(char key) {
     // 處理按鍵事件（如果需要）
   }

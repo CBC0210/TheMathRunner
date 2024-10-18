@@ -1,18 +1,22 @@
 // 主場景（首頁場面）的基本結構
 class HomeScreen extends Scene {
   PApplet app;
+  Camera camera;
   Button startButton;
   Button howToPlayButton;
   Button creditsButton;
+  Button exitButton;
 
-  HomeScreen(PApplet app) {
+  HomeScreen(PApplet app, Camera camera) {
     super(app);
     this.app = app;
+    this.camera = camera;
     
     // 初始化按鈕
-    startButton = new Button(app, "開始遊戲", app.width / 2, app.height / 2 - 60);
-    howToPlayButton = new Button(app, "玩法説明", app.width / 2, app.height / 2);
-    creditsButton = new Button(app, "版權聲明", app.width / 2, app.height / 2 + 60);
+    startButton = new Button(app, "開始遊戲", camera.x, camera.y - 60);
+    howToPlayButton = new Button(app, "玩法説明", camera.x, camera.y);
+    creditsButton = new Button(app, "版權聲明", camera.x, camera.y + 60);
+    exitButton = new Button(app, "退出遊戲", camera.x, camera.y + 120);
   }
 
   void display() {
@@ -20,12 +24,13 @@ class HomeScreen extends Scene {
     app.textAlign(CENTER);
     app.textSize(32);
     app.fill(0);
-    app.text("主頁面", app.width / 2, 100);
+    app.text("主頁面", camera.x, camera.y - 200);
 
     // 顯示按鈕
     startButton.display();
     howToPlayButton.display();
     creditsButton.display();
+    exitButton.display();
   }
 
   void handleMousePressed(int mouseX, int mouseY) {
@@ -36,10 +41,20 @@ class HomeScreen extends Scene {
       currentScene = new HowToPlayScreen(app); // 切換到玩法説明界面
     } else if (creditsButton.isClicked(mouseX, mouseY)) {
       currentScene = new CreditsScreen(app); // 切換到版權聲明界面
+    } else if (exitButton.isClicked(mouseX, mouseY)) {
+      app.exit(); // 退出遊戲
     }
   }
 
   void handleKeyPressed(char key) {
     // 處理按鍵事件（如果需要）
+  }
+
+  void updateHoverStates(int mouseX, int mouseY) {
+    // 更新每個按鈕的懸停狀態
+    startButton.updateHoverState(mouseX, mouseY);
+    howToPlayButton.updateHoverState(mouseX, mouseY);
+    creditsButton.updateHoverState(mouseX, mouseY);
+    exitButton.updateHoverState(mouseX, mouseY);
   }
 }

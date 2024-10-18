@@ -46,7 +46,7 @@ class Button {
   
   boolean isClicked(int mouseX, int mouseY) {
     if (mouseX > x - width / 2 && mouseX < x + width / 2 && mouseY > y - height / 2 && mouseY < y + height / 2) {
-      playClickSound();
+      //playClickSound();
       return true;
     }
     return false;

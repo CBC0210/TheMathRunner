@@ -39,4 +39,8 @@ class CreditsScreen extends Scene {
   void handleKeyPressed(char key) {
     // 處理按鍵事件（如果需要）
   }
+  
+  void updateHoverStates(int mouseX, int mouseY) {
+  
+  }
 }
