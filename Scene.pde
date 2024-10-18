@@ -10,4 +10,5 @@ abstract class Scene {
   abstract void display();
   abstract void handleMousePressed(int mouseX, int mouseY);
   abstract void handleKeyPressed(char key);
+  abstract void updateHoverStates(int mouseX, int mouseY);
 }

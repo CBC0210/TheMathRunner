@@ -7,10 +7,14 @@ HomeScreen homeScreen;
 LevelSelection levelSelection;
 GameScene gameScene;
 ResultScreen resultScreen;
+Camera camera;
 
 void setup() {
-  size(800, 600); // 設定畫布大小，可根據需求調整
+  fullScreen(); // 設定全螢幕，適應不同螢幕大小
   app = this;
+  
+  // 初始化攝影機
+  camera = new Camera(app, width / 2, height / 2);
   
   // 初始化各場景
   homeScreen = new HomeScreen(app);
@@ -23,13 +27,19 @@ void setup() {
 }
 
 void draw() {
+  camera.begin();
+  // 更新當前場景的懸停狀態
+  currentScene.updateHoverStates(mouseX, mouseY);
   // 顯示當前場景
   currentScene.display();
+  camera.end();
 }
 
 void mousePressed() {
+  // 將滑鼠點擊位置轉換為世界座標
+  PVector worldMouse = camera.screenToWorld(mouseX, mouseY);
   // 傳遞滑鼠點擊事件給當前場景
-  currentScene.handleMousePressed(mouseX, mouseY);
+  currentScene.handleMousePressed((int) worldMouse.x, (int) worldMouse.y);
 }
 
 void keyPressed() {
