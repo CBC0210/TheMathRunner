@@ -23,9 +23,9 @@ void setup() {
   
   // 初始化各場景
   homeScreen = new HomeScreen(app,camera);
-  levelSelection = new LevelSelection(app);
-  gameScene = new GameScene(app);
-  resultScreen = new ResultScreen(app);
+  levelSelection = new LevelSelection(app,camera);
+  gameScene = new GameScene(app,camera);
+  resultScreen = new ResultScreen(app,camera);
   
   // 預設顯示首頁場景
   currentScene = homeScreen;

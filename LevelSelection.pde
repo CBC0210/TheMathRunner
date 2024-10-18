@@ -3,15 +3,15 @@ class LevelSelection extends Scene {
   PApplet app;
   Button[] levelButtons;
   
-  LevelSelection(PApplet app) {
+  LevelSelection(PApplet app,Camera camera) {
     super(app);
     this.app = app;
     
     // 初始化關卡按鈕
     levelButtons = new Button[3];
-    levelButtons[0] = new Button(app, "關卡 1", app.width / 2, 150);
-    levelButtons[1] = new Button(app, "關卡 2", app.width / 2, 200);
-    levelButtons[2] = new Button(app, "關卡 3", app.width / 2, 250);
+    levelButtons[0] = new Button(app, "關卡 1", app.width / 2, 150,camera);
+    levelButtons[1] = new Button(app, "關卡 2", app.width / 2, 200,camera);
+    levelButtons[2] = new Button(app, "關卡 3", app.width / 2, 250,camera);
   }
   
   void display() {

@@ -3,12 +3,12 @@ class CreditsScreen extends Scene {
   PApplet app;
   Button backButton;
   
-  CreditsScreen(PApplet app) {
+  CreditsScreen(PApplet app, Camera camera) {
     super(app);
     this.app = app;
     
     // 初始化返回按鈕
-    backButton = new Button(app, "返回", app.width / 2, app.height - 100);
+    backButton = new Button(app, "返回", 0,-100,camera);
   }
   
   void display() {
@@ -41,6 +41,6 @@ class CreditsScreen extends Scene {
   }
   
   void updateHoverStates(int mouseX, int mouseY) {
-  
+      backButton.updateHoverState(mouseX,mouseY);
   }
 }

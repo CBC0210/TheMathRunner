@@ -3,12 +3,12 @@ class HowToPlayScreen extends Scene {
   PApplet app;
   Button backButton;
   
-  HowToPlayScreen(PApplet app) {
+  HowToPlayScreen(PApplet app,Camera camera) {
     super(app);
     this.app = app;
     
     // 初始化返回按鈕
-    backButton = new Button(app, "返回", app.width / 2, app.height - 100);
+    backButton = new Button(app, "返回", app.width / 2, app.height - 100,camera);
   }
   
   void display() {

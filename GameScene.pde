@@ -5,15 +5,15 @@ class GameScene extends Scene {
   Button[] optionButtons;
   Enemy enemy;
   
-  GameScene(PApplet app) {
+  GameScene(PApplet app,Camera camera) {
     super(app);
     this.app = app;
     this.armyCount = 10; // 初始軍隊數量，可根據需求調整
     
     // 初始化選項按鈕
     optionButtons = new Button[2];
-    optionButtons[0] = new Button(app, "X + 5", app.width / 4, app.height - 100);
-    optionButtons[1] = new Button(app, "X * 2", 3 * app.width / 4, app.height - 100);
+    optionButtons[0] = new Button(app, "X + 5", app.width / 4, app.height - 100,camera);
+    optionButtons[1] = new Button(app, "X * 2", 3 * app.width / 4, app.height - 100,camera);
     
     // 初始化敵人
     enemy = new Enemy(app, 15, app.width / 2, app.height / 2);
