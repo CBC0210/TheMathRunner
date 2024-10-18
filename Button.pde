@@ -10,38 +10,33 @@ class Button {
   float height = 40;
   boolean isHovered;
   SoundFile clickSound;
-  Camera camera;
-  
-  Button(PApplet app, String label, float x, float y, Camera camera) {
+  Button(PApplet app, String label, float x, float y) {
     this.app = app;
     this.label = label;
     this.x = x;
     this.y = y;
-    this.camera = camera;
-    this.isHovered = false;
+        this.isHovered = false;
     // 初始化按下按鈕的音效（需要將音效文件存於 data 目錄）
     //clickSound = new SoundFile(app, "data/sounds/click.mp3");
   }
   
   void display() {
-    float adjustedX = x + camera.x;
-    float adjustedY = y + camera.y;
+                    
     if (isHovered) {
       app.fill(200); // 當滑鼠懸停時的顏色
     } else {
       app.fill(255);
     }
     app.rectMode(CENTER);
-    app.rect(adjustedX, adjustedY, width, height);
+    app.rect(x, y, width, height);
     app.fill(0);
     app.textAlign(CENTER, CENTER);
-    app.text(label, adjustedX, adjustedY);
+    app.textSize(16);
+    app.text(label, x, y);
   }
   
-  void updateHoverState(int mouseX, int mouseY) {
-    float adjustedX = x + camera.x;
-    float adjustedY = y + camera.y;
-    isHovered = mouseX > adjustedX - width / 2 && mouseX < adjustedX + width / 2 && mouseY > adjustedY - height / 2 && mouseY < adjustedY + height / 2;
+  void updateHoverState(int mouseX, int mouseY) {     
+    isHovered = mouseX > x - width / 2 && mouseX < x + width / 2 && mouseY > y - height / 2 && mouseY < y + height / 2;
   }
   
   void playClickSound() {
@@ -51,9 +46,8 @@ class Button {
   }
   
   boolean isClicked(int mouseX, int mouseY) {
-    float adjustedX = x + camera.x;
-    float adjustedY = y + camera.y;
-    if (mouseX > adjustedX - width / 2 && mouseX < adjustedX + width / 2 && mouseY > adjustedY - height / 2 && mouseY < adjustedY + height / 2) {
+                    
+    if (mouseX > x - width / 2 && mouseX < x + width / 2 && mouseY > y - height / 2 && mouseY < y + height / 2) {
       //playClickSound();
       return true;
     }

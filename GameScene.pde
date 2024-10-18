@@ -1,59 +1,62 @@
+import processing.data.JSONArray;
+import processing.data.JSONObject;
+
 // 遊戲場景的基本結構
+import java.util.ArrayList;
+
 class GameScene extends Scene {
+  Player player;
+  ArrayList<Field> fields;
   PApplet app;
-  int armyCount;
-  Button[] optionButtons;
-  Enemy enemy;
+  Level[] levels;
   
-  GameScene(PApplet app,Camera camera) {
+  GameScene(PApplet app, int level) {
     super(app);
     this.app = app;
-    this.armyCount = 10; // 初始軍隊數量，可根據需求調整
     
-    // 初始化選項按鈕
-    optionButtons = new Button[2];
-    optionButtons[0] = new Button(app, "X + 5", app.width / 4, app.height - 100,camera);
-    optionButtons[1] = new Button(app, "X * 2", 3 * app.width / 4, app.height - 100,camera);
-    
-    // 初始化敵人
-    enemy = new Enemy(app, 15, app.width / 2, app.height / 2);
+    levels = new LevelUtils().loadLevels(app, "data/levels/level_" + level + ".json");
+    player = new Player(app);  // 初始化玩家
+    fields = new ArrayList<>();
+    fields.add(new Field(app, player, 0, 0, app.width, app.height / 3));  // 初始化第一塊場地  // 初始化場地，設置滾動速度為 2.0
   }
   
   void display() {
-    app.background(100);
-    app.textAlign(CENTER);
-    app.textSize(24);
-    app.fill(255);
-    app.text("軍隊人數: " + armyCount, app.width / 2, 50);
-    
-    // 顯示選項按鈕
-    for (Button button : optionButtons) {
-      button.display();
+    background(0);
+    // 更新玩家位置
+    player.update(relativeMouseX);
+    player.y -= 2;  // 玩家 Y 坐標以固定速度減少，模擬向前移動
+
+    // 更新場地
+    for (int i = fields.size() - 1; i >= 0; i--) {
+      Field f = fields.get(i);
+      if (f.getRelativeY() > app.height) {
+        fields.remove(i);  // 刪除距離玩家太遠的場地
+      }
     }
+
+    // 如果最後一個場地接近玩家，添加新的場地
+    if (fields.size() > 0 && fields.get(fields.size() - 1).getRelativeY() > -app.height / 2) {
+      fields.add(new Field(app, player, 0, fields.get(fields.size() - 1).y - app.height / 3, app.width, app.height / 3));
+    }
+
+    // 顯示場地
+    for (Field f : fields) {
+      f.display();
+    }
+    player.update(relativeMouseX);
     
-    // 顯示敵人
-    enemy.display();
+    player.display();
   }
   
   void handleMousePressed(int mouseX, int mouseY) {
-    // 檢查選項按鈕是否被點擊
-    if (optionButtons[0].isClicked(mouseX, mouseY)) {
-      armyCount += 5; // X + 5
-    } else if (optionButtons[1].isClicked(mouseX, mouseY)) {
-      armyCount *= 2; // X * 2
-    }
-    
-    // 檢查是否遇到敵人並處理互動
-    if (enemy.isEncountered(armyCount)) {
-      armyCount -= enemy.enemyCount;
-      if (armyCount < 0) {
-        armyCount = 0; // 確保軍隊數量不會低於 0
-      }
-    }
+
   }
-  void updateHoverStates(int mouseX, int mouseY) {
-  }
+  
   void handleKeyPressed(char key) {
     // 處理按鍵事件（如果需要）
+  }
+
+  void updateHoverStates(int mouseX, int mouseY) {
+    // 更新選項按鈕的懸停狀態
   }
 }

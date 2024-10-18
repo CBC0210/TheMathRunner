@@ -2,6 +2,8 @@ import processing.core.*;
 import processing.event.*;
 
 PApplet app;
+int relativeMouseX;
+int relativeMouseY;
 PFont notoFont;
 Scene currentScene;
 HomeScreen homeScreen;
@@ -11,7 +13,7 @@ ResultScreen resultScreen;
 Camera camera;
 
 void setup() {
-  fullScreen(); // 設定全螢幕，適應不同螢幕大小
+    fullScreen(); // 設定全螢幕，適應不同螢幕大小
   app = this;
   
   // 載入字體
@@ -22,29 +24,28 @@ void setup() {
   camera = new Camera(app, width / 2, height / 2);
   
   // 初始化各場景
-  homeScreen = new HomeScreen(app,camera);
-  levelSelection = new LevelSelection(app,camera);
-  gameScene = new GameScene(app,camera);
-  resultScreen = new ResultScreen(app,camera);
+  homeScreen = new HomeScreen(app);
+  levelSelection = new LevelSelection(app);
+  resultScreen = new ResultScreen(app);
   
   // 預設顯示首頁場景
   currentScene = homeScreen;
 }
 
 void draw() {
+  // 計算相對於世界的滑鼠座標
+  relativeMouseX = (int)((mouseX - camera.x) / camera.zoom);
+  relativeMouseY = (int)((mouseY - camera.y) / camera.zoom);
   camera.begin();
   // 更新當前場景的懸停狀態
-  currentScene.updateHoverStates(mouseX, mouseY);
+  currentScene.updateHoverStates(relativeMouseX, relativeMouseY);
   // 顯示當前場景
   currentScene.display();
   camera.end();
 }
 
 void mousePressed() {
-  // 將滑鼠點擊位置轉換為世界座標
-  PVector worldMouse = camera.screenToWorld(mouseX, mouseY);
-  // 傳遞滑鼠點擊事件給當前場景
-  currentScene.handleMousePressed((int) worldMouse.x, (int) worldMouse.y);
+  currentScene.handleMousePressed(relativeMouseX, relativeMouseY);
 }
 
 void keyPressed() {

@@ -4,13 +4,13 @@ class ResultScreen extends Scene {
   Button replayButton;
   Button nextLevelButton;
   
-  ResultScreen(PApplet app,Camera camera) {
+  ResultScreen(PApplet app) {
     super(app);
     this.app = app;
     
     // 初始化按鈕
-    replayButton = new Button(app, "重玩此關", app.width / 3, app.height / 2,camera);
-    nextLevelButton = new Button(app, "下一關", 2 * app.width / 3, app.height / 2,camera);
+    replayButton = new Button(app, "重玩此關", app.width / 3, app.height / 2);
+    nextLevelButton = new Button(app, "下一關", 2 * app.width / 3, app.height / 2);
   }
   
   void display() {

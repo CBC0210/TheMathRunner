@@ -12,7 +12,7 @@ class Camera {
   }
   
   void begin() {
-    app.translate(-x + app.width / 2, -y + app.height / 2);
+    app.translate(x, y);
     app.scale(zoom);
   }
   

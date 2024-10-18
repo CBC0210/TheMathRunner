@@ -1,0 +1,89 @@
+{
+    "levels": [
+      {
+        "subLevels": [
+          {
+            "enemyHp": 50,
+            "options": [
+              { "opt1": "選項 1 (Level 1)", "opt2": "另一選項 1 (Level 1)" },
+              { "opt1": "選項 2 (Level 1)", "opt2": "另一選項 2 (Level 1)" },
+              { "opt1": "選項 3 (Level 1)", "opt2": "另一選項 3 (Level 1)" }
+            ]
+          },
+          {
+            "enemyHp": 55,
+            "options": [
+              { "opt1": "選項 1 (Level 1)", "opt2": "另一選項 1 (Level 1)" },
+              { "opt1": "選項 2 (Level 1)", "opt2": "另一選項 2 (Level 1)" },
+              { "opt1": "選項 3 (Level 1)", "opt2": "另一選項 3 (Level 1)" }
+            ]
+          },
+          {
+            "enemyHp": 60,
+            "options": [
+              { "opt1": "選項 1 (Level 1)", "opt2": "另一選項 1 (Level 1)" },
+              { "opt1": "選項 2 (Level 1)", "opt2": "另一選項 2 (Level 1)" },
+              { "opt1": "選項 3 (Level 1)", "opt2": "另一選項 3 (Level 1)" }
+            ]
+          }
+        ]
+      },
+      {
+        "subLevels": [
+          {
+            "enemyHp": 60,
+            "options": [
+              { "opt1": "選項 1 (Level 2)", "opt2": "另一選項 1 (Level 2)" },
+              { "opt1": "選項 2 (Level 2)", "opt2": "另一選項 2 (Level 2)" },
+              { "opt1": "選項 3 (Level 2)", "opt2": "另一選項 3 (Level 2)" }
+            ]
+          },
+          {
+            "enemyHp": 65,
+            "options": [
+              { "opt1": "選項 1 (Level 2)", "opt2": "另一選項 1 (Level 2)" },
+              { "opt1": "選項 2 (Level 2)", "opt2": "另一選項 2 (Level 2)" },
+              { "opt1": "選項 3 (Level 2)", "opt2": "另一選項 3 (Level 2)" }
+            ]
+          },
+          {
+            "enemyHp": 70,
+            "options": [
+              { "opt1": "選項 1 (Level 2)", "opt2": "另一選項 1 (Level 2)" },
+              { "opt1": "選項 2 (Level 2)", "opt2": "另一選項 2 (Level 2)" },
+              { "opt1": "選項 3 (Level 2)", "opt2": "另一選項 3 (Level 2)" }
+            ]
+          }
+        ]
+      },
+      {
+        "subLevels": [
+          {
+            "enemyHp": 70,
+            "options": [
+              { "opt1": "選項 1 (Level 3)", "opt2": "另一選項 1 (Level 3)" },
+              { "opt1": "選項 2 (Level 3)", "opt2": "另一選項 2 (Level 3)" },
+              { "opt1": "選項 3 (Level 3)", "opt2": "另一選項 3 (Level 3)" }
+            ]
+          },
+          {
+            "enemyHp": 75,
+            "options": [
+              { "opt1": "選項 1 (Level 3)", "opt2": "另一選項 1 (Level 3)" },
+              { "opt1": "選項 2 (Level 3)", "opt2": "另一選項 2 (Level 3)" },
+              { "opt1": "選項 3 (Level 3)", "opt2": "另一選項 3 (Level 3)" }
+            ]
+          },
+          {
+            "enemyHp": 80,
+            "options": [
+              { "opt1": "選項 1 (Level 3)", "opt2": "另一選項 1 (Level 3)" },
+              { "opt1": "選項 2 (Level 3)", "opt2": "另一選項 2 (Level 3)" },
+              { "opt1": "選項 3 (Level 3)", "opt2": "另一選項 3 (Level 3)" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
